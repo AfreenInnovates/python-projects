@@ -52,19 +52,19 @@ The **Personal Knowledge Base Manager** is a Python-based application that helps
 
 ## How to Use
 
-### 1. Clone the Repository
+#### 1. Clone the Repository
 Clone the repository using the command below:
 `git clone https://github.com/AfreenInnovates/python-projects.git`
 
-### 2. Navigate to the Notes App Folder
+#### 2. Navigate to the Notes App Folder
 Change directory to the `Notes App` folder:
 `cd python-projects/Notes App`
 
-### 3. Install Dependencies
+#### 3. Install Dependencies
 Install the required Python packages:
 `pip install -r requirements.txt`
 
-### 4. Run the App
+#### 4. Run the App
 Start the application by running the `main.py` script:
 `python main.py`
 
