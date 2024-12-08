@@ -49,3 +49,26 @@ The **Personal Knowledge Base Manager** is a Python-based application that helps
 - Notes are stored in `data/notes.json`
 - Backups are created in `data/backup_notes.json`
 - Encryption keys are securely stored in `data/encryption_key.key`
+
+## How to Use
+
+### 1. Clone the Repository
+Clone the repository using the command below:
+`git clone https://github.com/AfreenInnovates/python-projects.git`
+
+### 2. Navigate to the Notes App Folder
+Change directory to the `Notes App` folder:
+`cd python-projects/Notes App`
+
+### 3. Install Dependencies
+Install the required Python packages:
+`pip install -r requirements.txt`
+
+### 4. Run the App
+Start the application by running the `main.py` script:
+`python main.py`
+
+
+
+## License
+This project is licensed under the MIT License.
