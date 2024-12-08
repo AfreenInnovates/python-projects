@@ -27,7 +27,7 @@ def get_key_from_password(password):
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
         length=32,
-        salt=b'fixed_salt',  # In production, use a unique salt per user
+        salt=b'fixed_salt', 
         iterations=100000,
     )
     key = base64.urlsafe_b64encode(kdf.derive(password.encode()))
