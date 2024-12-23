@@ -26,7 +26,7 @@ def add_chat(chat_name):
     if chat_name not in st.session_state.chats:
         st.session_state.chats[chat_name] = pd.DataFrame(columns=["Name", "Amount", "Currency", "Category", "Date"])
 
-# Sidebar for chat session management
+
 with st.sidebar:
     st.title("Expense Tracker Sessions")
     chat_name_input = st.text_input("New Chat Name", key="new_chat_name")
@@ -40,10 +40,10 @@ with st.sidebar:
         if st.button(chat_name):
             switch_chat(chat_name)
 
-    # New field for country name input
+    
     country_name = st.text_input("Enter your Country", "India")  # Default to "India"
 
-# Main application
+
 st.title(f"Expense Tracker - {st.session_state.current_chat} Session")
 
 # Expense input form
@@ -137,7 +137,7 @@ if "calculate_analytics" in st.session_state and st.session_state.calculate_anal
     else:
         st.write("Not enough data for time-series forecasting.")
 
-    # Add CSV download functionality after analysis
+    
     st.subheader("Download Current Expenses")
     csv_data = expenses_df.to_csv(index=False)
     st.download_button(
@@ -152,10 +152,10 @@ if "calculate_analytics" in st.session_state and st.session_state.calculate_anal
     uploaded_file = st.file_uploader("Upload your expenses CSV", type=["csv"])
 
     if uploaded_file:
-        # Read the CSV file into DataFrame
+        
         uploaded_expenses_df = pd.read_csv(uploaded_file)
 
-        # Show the DataFrame
+        
         st.write("### Data from uploaded file:")
         st.dataframe(uploaded_expenses_df)
 
@@ -180,11 +180,11 @@ if "calculate_analytics" in st.session_state and st.session_state.calculate_anal
         except Exception as e:
             st.error(f"Error fetching economic data for {country_name}: {str(e)}")
 
-        # Combine the economic data with the uploaded data
+        
         combined_data = pd.concat([uploaded_expenses_df, index_data[['Close']]], axis=1)
         combined_data = combined_data.rename(columns={'Close': 'Economic Indicator'})
 
-        # Prepare prompt for Gemini AI insights
+        
         prompt = (
             f"Expense data combined with economic data for {country_name}:\n{combined_data.to_string(index=False)}\n\n"
             "Based on the following combined data, provide insights on how the user can optimize their spending and start saving effectively. "
@@ -199,10 +199,10 @@ if "calculate_analytics" in st.session_state and st.session_state.calculate_anal
             "Make sure to keep the points concise and short, and on point. Don't drag it unnecessarily."
         )
 
-        # Generate insights using Gemini model
+        
         try:
             import google.generativeai as genai
-            genai.configure(api_key="AIzaSyCLZun60oKq5QgdqRtWoLMtHUpZyf1iAL0")
+            genai.configure(api_key="YOUR_API_KEY")
             response = genai.GenerativeModel("gemini-1.5-flash").generate_content(prompt)
             insights = response.text.strip()
 
